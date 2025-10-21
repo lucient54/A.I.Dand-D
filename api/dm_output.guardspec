@@ -1,0 +1,95 @@
+<rail version="0.1">
+  <output>
+    <object name="DMResponse">
+      <!-- Core narration -->
+      <string name="narration" description="Narrative description of the scene. Write in a vivid, fantasy storytelling tone." />
+
+      <!-- NPC dialogue array -->
+      <list name="npc_dialogue" description="List of NPC lines spoken this turn.">
+        <object>
+          <string name="name" description="Name of the NPC speaking." />
+          <string name="line" description="What the NPC says." />
+        </object>
+      </list>
+
+      <!-- Event block -->
+      <object name="events" description="In-world events and outcomes.">
+        <!-- Combat section -->
+        <object name="combat" description="Combat summary for this turn.">
+          <boolean name="active" description="Whether combat is ongoing or active this turn." />
+          <list name="enemies" description="List of enemies involved in combat.">
+            <object>
+              <string name="name" description="Enemy name." />
+              <integer name="hp" description="Enemy hit points remaining." />
+              <list name="status" description="List of current status effects.">
+                <string />
+              </list>
+            </object>
+          </list>
+          <string name="round_summary" required="false" description="Short narrative summary of the round’s events." />
+          <list name="player_outcomes" description="Results of player combat actions.">
+            <object>
+              <string name="player" description="Name of the player character acting." />
+              <string name="action" description="The action they attempted." />
+              <string name="result" description="Outcome type (success, failure, partial)." />
+            </object>
+          </list>
+        </object>
+
+        <!-- Skill checks -->
+        <list name="skill_checks" description="Skill checks that occurred this turn.">
+          <object>
+            <string name="type" description="Type of check (Perception, Stealth, etc.)." />
+            <string name="player" description="Name of the player rolling the check." />
+            <integer name="difficulty" description="Difficulty class (DC) for the check." />
+            <string name="result" description="Result type (success, failure, critical success, critical failure)." />
+          </object>
+        </list>
+
+        <!-- Quest updates -->
+        <object name="quest_updates" description="Quest progress changes.">
+          <list name="added">
+            <string description="Quest name newly added to player log." />
+          </list>
+          <list name="completed">
+            <string description="Quest name completed this turn." />
+          </list>
+        </object>
+
+        <!-- World changes -->
+        <object name="world_changes" description="World or environmental updates.">
+          <string name="location" required="false" description="New active location if changed." />
+          <list name="new_npcs">
+            <string description="Names of new NPCs appearing this turn." />
+          </list>
+          <list name="removed_npcs">
+            <string description="Names of NPCs that left or died this turn." />
+          </list>
+          <list name="items_gained">
+            <string description="Items obtained by players." />
+          </list>
+          <list name="items_lost">
+            <string description="Items removed or lost." />
+          </list>
+          <list name="status_effects">
+            <string description="Environmental or player status changes." />
+          </list>
+        </object>
+      </object>
+
+      <!-- Player choices for next turn -->
+      <list name="player_choices" description="List of 2–4 narrative choices for players. Each should be short and actionable.">
+        <string />
+      </list>
+
+      <!-- Optional DM notes -->
+      <string name="dm_notes" required="false" description="Private notes for DM continuity (hidden from players)." />
+    </object>
+  </output>
+
+  <prompt>
+    You are Ardent, an AI Dungeon Master for a fantasy adventure. 
+    Respond ONLY with valid JSON matching the schema above. 
+    Do not add commentary, explanations, or preambles.
+  </prompt>
+</rail>
