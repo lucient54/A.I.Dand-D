@@ -1,0 +1,16 @@
+ai-dm-starter/
+├─ api/
+│  ├─ dm_schema.py
+│  ├─ prompt_builder.py
+│  ├─ openai_client.py
+│  ├─ guardrails_helper.py
+│  ├─ redis_manager.py
+│  ├─ server.py
+│  ├─ Dockerfile
+│  ├─ requirements.txt
+├─ docker-compose.yml
+├─ unity/
+│  ├─ PlayerController.cs
+│  ├─ ServerGameManager.cs
+│  └─ UnityHTTPClient.cs
+├─ README.md
